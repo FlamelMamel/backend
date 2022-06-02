@@ -25,55 +25,6 @@
 
     <script src="js/cart.js"></script>
     <title>Name</title>
-    <script>
-        /*
-        const mongodb = require('mongodb');
-        const mongoClient = new mongodb.MongoClient('mongodb+srv://FlamelMamel:Hgnk5f8fr*@cluster0.hcy04.mongodb.net/?retryWrites=true&w=majority', {
-            useUnifiedTopology: true
-        });
-
-        let htmlCatalog = '<div class="row">';
-        let CATALOG = "";
-
-        $(document).ready ( function(){
-            mongoClient.connect(async function(error, mongo) {
-                if (!error) {
-                    let db = mongo.db('candyshop');  // database connect
-                    let coll = db.collection('products'); //collection name
-                    CATALOG = await coll.find({}).toArray();
-                } else {
-                    console.error(err);
-                }
-            });
-
-            let htmlCatalog = '<div class="row">';
-
-            CATALOG.forEach(({ name, img, price}) => {
-                htmlCatalog += `
-            <div class="col-lg-4 text-center">
-                <div class="card border-0 bg-light mb-2">
-                    <div class="card-body">
-                        <img src="images/${img}" class="img-fluid">
-                    </div>
-                </div>
-            <h6>${name}</h6>
-            <p>${price}</p>
-            <button class="button-primary plus" data-id="${name}">+</button>
-            <button class="button-primary minus" data-id="${name}">-</button>
-            </div>
-            `;
-            });
-
-            const html = `
-            <ul>
-                ${htmlCatalog}
-            </ul>
-        `;
-            const ROOT_PRODUCTS = document.getElementById('products');
-
-            ROOT_PRODUCTS.innerHTML = html;
-        });*/
-    </script>
 </head>
 <body>
 

@@ -4,7 +4,7 @@ let cart = {
 
 document.onclick = event => {
     if (event.target.classList.contains('plus')){
-        plusFunction(event.target.dataset.id);
+        console.log(event.target.dataset.id);
     }
     if (event.target.classList.contains('minus')){
         minusFunction(event.target.dataset.id);
