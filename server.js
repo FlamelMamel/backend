@@ -16,7 +16,16 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/', 'index.html'));
+    mongoClient.connect(async function(error, mongo) {
+        if (!error) {
+            let db = mongo.db('candyshop');
+            let coll = db.collection('products');
+            let data = await coll.find().toArray();
+            res.render('index', {data:data});
+        } else {
+            console.error(err);
+        }
+    });
 });
 
 app.get('/style.css', (req, res) => {
