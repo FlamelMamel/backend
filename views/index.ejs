@@ -126,17 +126,13 @@
 
     }
 
-    const openPopUp = document.getElementById('openPopUp');
-    const closePopUp = document.getElementById('closePopUp');
-    const popUp = document.getElementById('pop_up');
-
-    openPopUp.addEventListener('click', function (e){
+    document.getElementById('openPopUp').addEventListener('click', function (e){
         e.preventDefault();
-        popUp.classList.add(' active');
+        document.getElementById('openPopUp').className = 'pop_up active';
     })
 
-    closePopUp.addEventListener('click', () => {
-        popUp.classList.remove(' active');
+    document.getElementById('closePopUp').addEventListener('click', () => {
+        document.getElementById('openPopUp').className = 'pop_up';
     })
 
     document.onclick = event => {
