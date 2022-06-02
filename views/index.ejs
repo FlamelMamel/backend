@@ -183,8 +183,9 @@
             </div>
             <h6><%=data[i].name%></h6>
             <p><%=data[i].price%></p>
-            <button class="button-primary addToCart" data-id="<%=data[i]._id%>">+</button>
-            <button class="button-primary minus" data-id="<%=data[i]._id%>">-</button>
+            <form action="/addToCart" method="post">
+            <button type="submit" class="button-primary addToCart" data-id="<%=data[i]._id%>">Add to cart</button>
+            </form>
         </div>
         <% } %>
     </div>
@@ -287,6 +288,12 @@
                     <div class="total-price">$349</div>
                 </div>
             </div>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="38CAVAW9NVSYN">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
             <div class="pop_up_close" id="closePopUp">&#10006</div>
         </div>
     </div>
