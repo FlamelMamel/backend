@@ -32,17 +32,18 @@
 		  const mongoClient = new mongodb.MongoClient('mongodb+srv://FlamelMamel:Hgnk5f8fr*@cluster0.hcy04.mongodb.net/?retryWrites=true&w=majority', {
 			  useUnifiedTopology: true
 		  });
+		  let CATALOG = '';
+		  let htmlCatalog = '<div class="row">';
 		  mongoClient.connect(async function(error, mongo) {
 			  if (!error) {
 				  let db = mongo.db('candyshop');  // database connect
 				  let coll = db.collection('products'); //collection name
-				  const CATALOG = await coll.find({}).toArray();
-				  let htmlCatalog = '<div class="row">';
+				  CATALOG = await coll.find({}).toArray();
 			  } else {
 				  console.error(err);
 			  }
 		  });
-		  CATALOG.forEach(({ id, name, price, img }) => {
+		  CATALOG.forEach(({ id, name, description, img, price, count }) => {
 			  htmlCatalog += `
 	  <div class="col-lg-4 text-center">
 		  <div class="card border-0 bg-light mb-2">
@@ -123,6 +124,7 @@
         <a href="javascript:void(0);" class="search-cancel">
             <i class="fas fa-times"></i>
         </a>
+  </div>
   </div>
 </nav>
 
