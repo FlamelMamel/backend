@@ -24,19 +24,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <title>Name</title>
     <script>
-        const openPopUp = document.getElementById('open_pop_up')
 
-        const closePopUp = document.getElementById('close_pop_up');
-
-        const popUp = document.getElementById('pop_up');
-
-        function openPopUp(){
+        $( "#openPopUp" ).click(function() {
             popUp.classList.add('active');
-        }
+        });
 
-        function closePopUp(){
+        $( "#closePopUp" ).click(function() {
             popUp.classList.remove('active');
-        }
+        });
 
 
     </script>
@@ -188,7 +183,6 @@
 </section>
 
 <div id="products"></div>
-<script src="js/unit.js"></script>
 
 <div class="pop_up">
     <div class="pop_up_container">
