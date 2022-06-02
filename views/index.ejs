@@ -135,12 +135,12 @@
 </section>
 <script>
     let cart = {
-        'el1':0
+
     }
 
     document.onclick = event => {
         if (event.target.classList.contains('plus')){
-            console.log(event.target.dataset.id);
+            plusFunction(event.target.dataset.id);
         }
         if (event.target.classList.contains('minus')){
             minusFunction(event.target.dataset.id);
