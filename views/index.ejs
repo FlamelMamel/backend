@@ -156,6 +156,9 @@
     }
 
     const plusFunction = id => {
+        if (cart[id] === null){
+            cart[id] = 0;
+        }
         cart[id]++;
         renderCart();
     }
