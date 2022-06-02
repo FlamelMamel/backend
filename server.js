@@ -27,6 +27,10 @@ app.get('/register', function(req, res){
     res.sendFile(path.join(__dirname, '/', 'register.html'));
 });
 
+app.get('/addNewProduct', function(req, res){
+    res.sendFile(path.join(__dirname, '/', 'Product.html'));
+});
+
 app.post('/addnewuser', urlencodedParser, function(req, res){
     mongoClient.connect(async function(error, mongo) {
         if (!error) {
@@ -61,6 +65,20 @@ app.post('/checkuser', urlencodedParser, function(req, res){
             }
         });
     }
+});
+
+app.post('/addProduct', urlencodedParser, function(req, res){
+
+    mongoClient.connect(async function(error, mongo) {
+        if (!error) {
+            let db = mongo.db('candyshop');
+            let coll = db.collection('products');
+            await coll.insertMany([{name: req.body.name, description: req.body.description, img: req.body.img, price: req.body.price, count: req.body.count}]);
+        } else {
+            console.error(err);
+        }
+    });
+    res.redirect('/register');
 });
 
 let ObjectID = require('mongodb').ObjectID;
