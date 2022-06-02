@@ -175,19 +175,19 @@
 
 <section>
     <div class="row">
-    <% for(let i = 0; i < data.length; i++){ %>
+        <% for(let i = 0; i < data.length; i++){ %>
         <div class="col-lg-4 text-center">
             <div class="card border-0 bg-light mb-2">
                 <div class="card-body">
-                    <img src="images/<%data[i].img%>" class="img-fluid">
+                    <img src="images/<%=data[i].img%>" class="img-fluid">
                 </div>
             </div>
-            <h6><%data[i].name%></h6>
-            <p><%data[i].price%></p>
-            <button class="button-primary plus" data-id="<%data[i]._id%>">+</button>
-            <button class="button-primary minus" data-id="<%data[i]._id%>">-</button>
+            <h6><%=data[i].name%></h6>
+            <p><%=data[i].price%></p>
+            <button class="button-primary plus" data-id="<%=data[i]._id%>">+</button>
+            <button class="button-primary minus" data-id="<%=data[i]._id%>">-</button>
         </div>
-    <% } %>
+        <% } %>
     </div>
 </section>
 
