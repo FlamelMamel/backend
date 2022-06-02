@@ -137,10 +137,10 @@
             minusFunction(event.target.dataset.id);
         }
         if (event.target.classList.contains('pop_up_open')){
-            popUp.classList.add('active');
+            document.getElementById('pop_up').classList.add('active');
         }
         if (event.target.classList.contains('pop_up_close')){
-            popUp.classList.remove('active');
+            document.getElementById('pop_up').classList.remove('active');
         }
     }
 
@@ -189,7 +189,7 @@
 
 <div id="products"></div>
 
-<div class="pop_up">
+<div class="pop_up" id="pop_up">
     <div class="pop_up_container">
         <div class="pop_up_body">
             <div class="shopping-cart">
