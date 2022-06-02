@@ -135,8 +135,8 @@
             </div>
             <h6><%=data[i].name%></h6>
             <p><%=data[i].price%></p>
-            <button class="button-primary plus" data-id="<%=data[i]._id%>">+</button>
-            <button class="button-primary minus" data-id="<%=data[i]._id%>">-</button>
+            <button onclick="plusFunction()" class="button-primary plus" data-id="<%=data[i]._id%>">+</button>
+            <button onclick="minusFunction()" class="button-primary minus" data-id="<%=data[i]._id%>">-</button>
         </div>
         <% } %>
     </div>
