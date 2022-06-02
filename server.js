@@ -40,6 +40,10 @@ app.get('/addNewProduct', function(req, res){
     res.sendFile(path.join(__dirname, '/', 'Product.html'));
 });
 
+app.get('/profile', function(req, res){
+    res.sendFile(path.join(__dirname, '/', 'profile.ejs'));
+});
+
 app.post('/addnewuser', urlencodedParser, function(req, res){
     mongoClient.connect(async function(error, mongo) {
         if (!error) {
