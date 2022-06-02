@@ -23,18 +23,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <title>Name</title>
-    <script>
-
-        $( "#openPopUp" ).click(function() {
-            popUp.classList.add('active');
-        });
-
-        $( "#closePopUp" ).click(function() {
-            popUp.classList.remove('active');
-        });
-
-
-    </script>
 </head>
 <body>
 
@@ -147,6 +135,12 @@
         }
         if (event.target.classList.contains('addToCart')){
             minusFunction(event.target.dataset.id);
+        }
+        if (event.target.classList.contains('pop_up_open')){
+            popUp.classList.add('active');
+        }
+        if (event.target.classList.contains('pop_up_close')){
+            popUp.classList.remove('active');
         }
     }
 
