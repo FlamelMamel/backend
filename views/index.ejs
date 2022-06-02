@@ -145,6 +145,14 @@
         if (event.target.classList.contains('minus')){
             minusFunction(event.target.dataset.id);
         }
+        if (event.target.classList.contains('addToCart')){
+            minusFunction(event.target.dataset.id);
+        }
+    }
+
+    const addToCart = id => {
+        cart[id] = 1;
+        renderCart();
     }
 
     const minusFunction = id => {
@@ -178,7 +186,7 @@
             </div>
             <h6><%=data[i].name%></h6>
             <p><%=data[i].price%></p>
-            <button class="button-primary plus" data-id="<%=data[i]._id%>">+</button>
+            <button class="button-primary addToCart" data-id="<%=data[i]._id%>">+</button>
             <button class="button-primary minus" data-id="<%=data[i]._id%>">-</button>
         </div>
         <% } %>
