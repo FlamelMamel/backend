@@ -41,7 +41,7 @@ app.get('/addNewProduct', function(req, res){
 });
 
 app.get('/profile', function(req, res){
-    res.sendFile(path.join(__dirname, '/', 'profile.ejs'));
+    res.sendFile(path.join(__dirname, '/', 'views/profile.ejs'));
 });
 
 app.post('/addnewuser', urlencodedParser, function(req, res){
