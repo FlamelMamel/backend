@@ -22,9 +22,24 @@
             src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-
-    <script src="js/cart.js"></script>
     <title>Name</title>
+    <script>
+        const openPopUp = document.getElementById('open_pop_up')
+
+        const closePopUp = document.getElementById('close_pop_up');
+
+        const popUp = document.getElementById('pop_up');
+
+        function openPopUp(){
+            popUp.classList.add('active');
+        }
+
+        function closePopUp(){
+            popUp.classList.remove('active');
+        }
+
+
+    </script>
 </head>
 <body>
 
@@ -64,7 +79,7 @@
                 <a href="/register">
                     <i class="far fa-user"></i>
                 </a>
-                <button class="pop_up_open" onclick="openPopUp">
+                <button class="pop_up_open" id="openPopUp">
                     <i class="far fa-user"></i>
                 </button>
             </div>
@@ -123,7 +138,37 @@
         </div>
     </a>
 </section>
+<script>
+    let cart = {
+        'el1':0
+    }
 
+    document.onclick = event => {
+        if (event.target.classList.contains('plus')){
+            console.log(event.target.dataset.id);
+        }
+        if (event.target.classList.contains('minus')){
+            minusFunction(event.target.dataset.id);
+        }
+    }
+
+    const minusFunction = id => {
+        if (cart[id]-1 == 0){
+            delete cart[id];
+        }
+        cart[id]--;
+        renderCart();
+    }
+
+    const plusFunction = id => {
+        cart[id]++;
+        renderCart();
+    }
+
+    const renderCart = () => {
+        console.log(cart);
+    }
+</script>
 <section>
     <div class="row">
         <% for(let i = 0; i < data.length; i++){ %>
@@ -135,8 +180,8 @@
             </div>
             <h6><%=data[i].name%></h6>
             <p><%=data[i].price%></p>
-            <button onclick="plusFunction()" class="button-primary plus" data-id="<%=data[i]._id%>">+</button>
-            <button onclick="minusFunction()" class="button-primary minus" data-id="<%=data[i]._id%>">-</button>
+            <button class="button-primary plus" data-id="<%=data[i]._id%>">+</button>
+            <button class="button-primary minus" data-id="<%=data[i]._id%>">-</button>
         </div>
         <% } %>
     </div>
@@ -240,7 +285,7 @@
                     <div class="total-price">$349</div>
                 </div>
             </div>
-            <div class="pop_up_close" onclick="closePopUp()">&#10006</div>
+            <div class="pop_up_close" id="closePopUp">&#10006</div>
         </div>
     </div>
 </div>
@@ -254,17 +299,17 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
-                        <img src="images/a1.jpg" class="img-fluid mb-3">
+                        <img src="/images/a1.jpg" class="img-fluid mb-3">
                         <h5>Be stylish</h5>
                         <p>Hello everyone! Our names are Nurym and Alisher from the SE-2101 group. We are young students from Astana IT University who have just started learning web programming. So, do not judge strictly :)</p>
                     </div>
                     <div class="col-lg-4">
-                        <img src="images/a2.jpg" class="img-fluid mb-3">
+                        <img src="/images/a2.jpg" class="img-fluid mb-3">
                         <h5>Be modern</h5>
                         <p>Our site was created for those who would not like to scour the shops in search of clothes that suit them.</p>
                     </div>
                     <div class="col-lg-4">
-                        <img src="images/a3.jpg" class="img-fluid mb-3">
+                        <img src="/images/a3.jpg" class="img-fluid mb-3">
                         <h5>Be yourself</h5>
                         <p> We invite you to send us your full-length photo and subscribe to clothes according to your preferences, where you will receive clothes that are right for you. We hope that we will get along!</p>
                     </div>
