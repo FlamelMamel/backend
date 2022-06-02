@@ -132,7 +132,7 @@
     })
 
     document.getElementById('closePopUp').addEventListener('click', function() {
-        document.getElementById('pop_up active').className = 'pop_up';
+        document.getElementById('pop_up active').remove(' active');
         document.getElementById('pop_up').className = 'pop_up';
     })
 
