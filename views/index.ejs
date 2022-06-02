@@ -131,8 +131,9 @@
         document.getElementById('pop_up').className = 'pop_up active';
     })
 
-    document.getElementById('closePopUp').addEventListener('click', () => {
+    document.getElementById('closePopUp').addEventListener('click', function() {
         document.getElementById('pop_up active').className = 'pop_up';
+        document.getElementById('pop_up').className = 'pop_up';
     })
 
     document.onclick = event => {
