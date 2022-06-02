@@ -25,62 +25,22 @@
 
     
     <script src="Main.js" async></script>
+	  <script src="js/cart.js"></script>
 	  <script>
-		  const CATALOG = [
-	  {
-	  id: 'el1',
-	  name: 'FENDER SQUIER BULLET STRAT HT HSS BLK',
-	  img: 'https://i.ibb.co/QJfqs4K/1.jpg',
-	  price: 13600,
-	  },
-	  {
-	  id: 'el2',
-	  name: 'FENDER SQUIER AFFINITY',
-	  img: 'https://i.ibb.co/pKrG5ZJ/2.jpg',
-	  price: 23900,
-	  },
-	  {
-	  id: 'el3',
-	  name: 'IBANEZ GIO GRG121DX-BKF BLACK FLAT',
-	  img: 'https://i.ibb.co/NnvcYhR/3.jpg',
-	  price: 21600,
-	  },
-	  {
-	  id: 'el4',
-	  name: 'EPIPHONE LES PAUL STUDIO LT EBONY',
-	  img: 'https://i.ibb.co/4Tg91WL/4.jpg',
-	  price: 19900,
-	  },
-	  {
-	  id: 'el5',
-	  name: 'FENDER SQUIER BULLET TREM HSS AWT',
-	  img: 'https://i.ibb.co/MC7sy1F/5.jpg',
-	  price: 14500,
-	  },
-	  {
-	  id: 'el6',
-	  name: 'FENDER SQUIER BULLET MUSTANG HH BLK',
-	  img: 'https://i.ibb.co/qNBWPb0/6.jpg',
-	  price: 14600,
-	  },
-	  {
-	  id: 'el7',
-	  name: 'FENDER SQUIER BULLET STRAT HT AWT',
-	  img: 'https://i.ibb.co/WH1h2wV/7.jpg',
-	  price: 13600,
-	  },
-	  {
-	  id: 'el8',
-	  name: 'JACKSON JS22-7 DINKY SATIN BLACK',
-	  img: 'https://i.ibb.co/2cBg9g9/8.jpg',
-	  price: 28700,
-	  }]
-
 	  $(document).ready ( function(){
-	  let htmlCatalog = '<div class="row">';
+		  const mongodb = require('mongodb');
+		  const mongoClient = new mongodb.MongoClient('mongodb+srv://FlamelMamel:Hgnk5f8fr*@cluster0.hcy04.mongodb.net/?retryWrites=true&w=majority', {
+			  useUnifiedTopology: true
+		  });
+		  mongoClient.connect(async function(error, mongo) {
+			  if (!error) {
+				  let db = mongo.db('candyshop');  // database connect
+				  let coll = db.collection('products'); //collection name
+				  const CATALOG = await coll.find().toArray();
+				  let htmlCatalog = '<div class="row">';
 
-	  CATALOG.forEach(({ id, name, price, img }) => {
-	  htmlCatalog += `
+				  CATALOG.forEach(({ id, name, price, img }) => {
+					  htmlCatalog += `
 	  <div class="col-lg-4 text-center">
 		  <div class="card border-0 bg-light mb-2">
 			  <div class="card-body">
@@ -93,16 +53,20 @@
 		  <button class="button-primary minus" data-id="${id}">-</button>
 	  </div>
 	  `;
-	  });
+				  });
 
-	  const html = `
+				  const html = `
 	  <ul>
 		  ${htmlCatalog}
 	  </ul>
 	  `;
-	  const ROOT_PRODUCTS = document.getElementById('products');
+				  const ROOT_PRODUCTS = document.getElementById('products');
 
-	  ROOT_PRODUCTS.innerHTML = html;
+				  ROOT_PRODUCTS.innerHTML = html;
+			  } else {
+				  console.error(err);
+			  }
+		  });
 	  });
 	  </script>
 
@@ -146,6 +110,9 @@
             <a href="/register">
                 <i class="far fa-user"></i>
             </a>
+		    <button class="pop_up_open" id="open_pop_up">
+			  <i class="far fa-user"></i>
+		    </button>
         </div>
     </div>
   </div>
@@ -205,6 +172,109 @@
   <div id="products"></div>
   <script src="js/unit.js"></script>
 
+  <div class="pop_up">
+	  <div class="pop_up_container">
+		  <div class="pop_up_body">
+			  <div class="shopping-cart">
+				  <!-- Title -->
+				  <div class="title">
+					  Shopping Bag
+				  </div>
+
+				  <!-- Товар #1 -->
+				  <div class="item">
+					  <div class="buttons">
+						  <span class="delete-btn"></span>
+						  <span class="like-btn"></span>
+					  </div>
+
+					  <div class="image">
+						  <img src="item-1.png" alt="" />
+					  </div>
+
+					  <div class="description">
+						  <span>Common Projects</span>
+						  <span>Bball High</span>
+						  <span>White</span>
+					  </div>
+
+					  <div class="quantity">
+						  <button class="plus-btn" type="button" name="button">
+							  <img src="plus.svg" alt="" />
+						  </button>
+						  <input type="text" name="name" value="1">
+						  <button class="minus-btn" type="button" name="button">
+							  <img src="minus.svg" alt="" />
+						  </button>
+					  </div>
+
+					  <div class="total-price">$549</div>
+				  </div>
+
+				  <!-- Товар #2 -->
+				  <div class="item">
+					  <div class="buttons">
+						  <span class="delete-btn"></span>
+						  <span class="like-btn"></span>
+					  </div>
+
+					  <div class="image">
+						  <img src="item-2.png" alt=""/>
+					  </div>
+
+					  <div class="description">
+						  <span>Maison Margiela</span>
+						  <span>Future Sneakers</span>
+						  <span>White</span>
+					  </div>
+
+					  <div class="quantity">
+						  <button class="plus-btn" type="button" name="button">
+							  <img src="plus.svg" alt="" />
+						  </button>
+						  <input type="text" name="name" value="1">
+						  <button class="minus-btn" type="button" name="button">
+							  <img src="minus.svg" alt="" />
+						  </button>
+					  </div>
+
+					  <div class="total-price">$870</div>
+				  </div>
+
+				  <!-- Товар #3 -->
+				  <div class="item">
+					  <div class="buttons">
+						  <span class="delete-btn"></span>
+						  <span class="like-btn"></span>
+					  </div>
+
+					  <div class="image">
+						  <img src="item-3.png" alt="" />
+					  </div>
+
+					  <div class="description">
+						  <span>Our Legacy</span>
+						  <span>Brushed Scarf</span>
+						  <span>Brown</span>
+					  </div>
+
+					  <div class="quantity">
+						  <button class="plus-btn" type="button" name="button">
+							  <img src="plus.svg" alt="" />
+						  </button>
+						  <input type="text" name="name" value="1">
+						  <button class="minus-btn" type="button" name="button">
+							  <img src="minus.svg" alt="" />
+						  </button>
+					  </div>
+
+					  <div class="total-price">$349</div>
+				  </div>
+			  </div>
+			  <div class="pop_up_close" id="close_pop_up">&#10006</div>
+		  </div>
+	  </div>
+  </div>
 <section class="about">
 	<a name="2">
 	<div class="container py-5">

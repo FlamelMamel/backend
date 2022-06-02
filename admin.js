@@ -38,7 +38,7 @@ app.post('/signup', urlencodedParser, function (req, res){
      const now = Date.now(); //current date
      mongoClient.connect(async function(error, mongo) {
           if (!error) {
-               let db = mongo.db('Name');  // database connect
+               let db = mongo.db('candyshop');  // database connect
                let coll = db.collection('users'); //collection name
                await coll.insertMany([{name: nameInput, email: emailInput, 
                 password: passwordInput, city: cityInput, date: now  //add date to db
@@ -59,7 +59,7 @@ app.post('/signin', urlencodedParser, function (req, res){
      else{
          mongoClient.connect(async function(error, mongo) {
              if (!error) {
-                let db = mongo.db('Name');  // database connect
+                let db = mongo.db('candyshop');  // database connect
                 let coll = db.collection('users'); //collection name
                 let check = await coll.find({$and: [{email: emailInput}, {password: passwordInput}]}).toArray();
                 res.cookie('email', emailInput);
