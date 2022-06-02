@@ -128,11 +128,11 @@
 
     document.getElementById('openPopUp').addEventListener('click', function (e){
         e.preventDefault();
-        document.getElementById('openPopUp').className = 'pop_up active';
+        document.getElementById('pop_up').className = 'pop_up active';
     })
 
     document.getElementById('closePopUp').addEventListener('click', () => {
-        document.getElementById('openPopUp').className = 'pop_up';
+        document.getElementById('pop_up').className = 'pop_up';
     })
 
     document.onclick = event => {
