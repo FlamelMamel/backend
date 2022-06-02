@@ -32,17 +32,14 @@
 		  const mongoClient = new mongodb.MongoClient('mongodb+srv://FlamelMamel:Hgnk5f8fr*@cluster0.hcy04.mongodb.net/?retryWrites=true&w=majority', {
 			  useUnifiedTopology: true
 		  });
-		  let CATALOG = '';
-		  let htmlCatalog = '<div class="row">';
-		  mongoClient.connect(async function(error, mongo) {
-			  if (!error) {
-				  let db = mongo.db('candyshop');  // database connect
-				  let coll = db.collection('products'); //collection name
-				  CATALOG = await coll.find({}).toArray();
-			  } else {
-				  console.error(err);
-			  }
-		  });
+		  let CATALOG = [{
+			      _id: new ObjectId("629882820dd1fea4fe1edef2"),
+				  name: 'Конфеты',
+				  description: 'Конфеты',
+				  img: 'Конфеты',
+				  price: '500',
+				  count: '20',}];
+
 		  CATALOG.forEach(({ id, name, description, img, price, count }) => {
 			  htmlCatalog += `
 	  <div class="col-lg-4 text-center">
