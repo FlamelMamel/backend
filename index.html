@@ -36,11 +36,14 @@
 			  if (!error) {
 				  let db = mongo.db('candyshop');  // database connect
 				  let coll = db.collection('products'); //collection name
-				  const CATALOG = await coll.find().toArray();
+				  const CATALOG = await coll.find({}).toArray();
 				  let htmlCatalog = '<div class="row">';
-
-				  CATALOG.forEach(({ id, name, price, img }) => {
-					  htmlCatalog += `
+			  } else {
+				  console.error(err);
+			  }
+		  });
+		  CATALOG.forEach(({ id, name, price, img }) => {
+			  htmlCatalog += `
 	  <div class="col-lg-4 text-center">
 		  <div class="card border-0 bg-light mb-2">
 			  <div class="card-body">
@@ -53,20 +56,16 @@
 		  <button class="button-primary minus" data-id="${id}">-</button>
 	  </div>
 	  `;
-				  });
+		  });
 
-				  const html = `
+		  const html = `
 	  <ul>
 		  ${htmlCatalog}
 	  </ul>
 	  `;
-				  const ROOT_PRODUCTS = document.getElementById('products');
+		  const ROOT_PRODUCTS = document.getElementById('products');
 
-				  ROOT_PRODUCTS.innerHTML = html;
-			  } else {
-				  console.error(err);
-			  }
-		  });
+		  ROOT_PRODUCTS.innerHTML = html;
 	  });
 	  </script>
 
