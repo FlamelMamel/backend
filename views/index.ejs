@@ -126,6 +126,19 @@
 
     }
 
+    const openPopUp = document.getElementById('openPopUp');
+    const closePopUp = document.getElementById('closePopUp');
+    const popUp = document.getElementById('pop_up');
+
+    openPopUp.addEventListener('click', function (e){
+        e.preventDefault();
+        popUp.classList.add('active');
+    })
+
+    closePopUp.addEventListener('click', () => {
+        popUp.classList.remove('active');
+    })
+
     document.onclick = event => {
         if (event.target.classList.contains('plus')){
             plusFunction(event.target.dataset.id);
@@ -135,12 +148,6 @@
         }
         if (event.target.classList.contains('addToCart')){
             minusFunction(event.target.dataset.id);
-        }
-        if (event.target.classList.contains('pop_up_open')){
-            document.getElementById('pop_up').classList.add('active');
-        }
-        if (event.target.classList.contains('pop_up_close')){
-            document.getElementById('pop_up').classList.remove('active');
         }
     }
 
